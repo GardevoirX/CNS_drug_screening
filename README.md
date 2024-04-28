@@ -8,7 +8,7 @@ Quantitative structure-activity relationship (QSAR) is a model that relates a se
 
 $$\log(1/C) = k_1 \pi + k_2 \sigma + k_3$$
 
-where $\pi$ stands for the partition constant, $\sigma$ stands for the Hammett constant, and $k_1$, $k_2$ and $k_3$ are obtained via the least squares.
+where $\pi$ stands for the partition constant, $\sigma$ stands for the Hammett constant, and $k_1$, $k_2$ and $k_3$ are obtained via the least squares. ([Hansch, 1962](https://doi.org/10.1021/ar50020a002))
 
 This model can be further generalized as
 
