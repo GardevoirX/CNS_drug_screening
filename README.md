@@ -2,9 +2,9 @@
 This repo holds the code of the competition "Central Nervous System (CNS) drug development: drug screening and optimization" and serves as a semester project of "AI for Chemistry" (CH-457).
 
 ## Introduction
-The treatment of central nervous system (CNS) diseases is very tricky due to the existence of blood-brain barrier (BBB). The BBB is a highly selective barrier between the circulatory system and the CNS, which protects the brain from harmful substances in the blood while also keeping the drugs against CNS diseases from the focus of infection. Near 98% of small molecular drugs and almost all macromolecular drugs cannot pass that barrier.
+The treatment of central nervous system (CNS) diseases is very tricky due to the existence of the blood-brain barrier (BBB). The BBB is a highly selective barrier between the circulatory system and the CNS, which protects the brain from harmful substances in the blood while also keeping the drugs against CNS diseases from the focus of infection. Near 98% of small molecular drugs and almost all macromolecular drugs cannot pass that barrier.
 
-Quantitative structure-activity relationship (QSAR) is a model that relates a series of molecular properties (X, descriptors) to the activities of the molecular (Y, labels). Hansch and Fujita first proposed a linear model betweeen molar concentrations, Hammett constants and the partition coefficients:
+Quantitative structure-activity relationship (QSAR) is a model that relates a series of molecular properties (X, descriptors) to the activities of the molecular (Y, labels). Hansch and Fujita first proposed a linear model between molar concentrations, Hammett constants and the partition coefficients:
 
 $$\log(1/C) = k_1 \pi + k_2 \sigma + k_3$$
 
@@ -15,3 +15,22 @@ This model can be further generalized as
 $$Activity = f(property_1, propterty_2, ...) + error$$
 
 the $f$ here can be either a linear model or a very complex neural network.
+
+## Dataset
+The dataset is organized as
+
+| SMILES             | Target |
+|--------------------|--------|
+| CC(=O)Nc1ccc(cc1)O | 1      |
+| CC1OC1P(=O)(O)O    | 0      |
+| ...                | ...    |
+
+here 1 stands for the CNS drugs and 0 stands for non-CNS drugs. There are a total of 701 data in the training set and 368 data in the test set.
+
+## Methods
+
+### Descriptors
+Descriptors are mainly calculated with the help of the [descriptor module of RDKit](https://www.rdkit.org/docs/source/rdkit.Chem.Descriptors.html).
+
+### Models
+Models can be simple models provided by [scikit-learn](https://scikit-learn.org/stable/) or complex models build by [PyTorch](https://pytorch.org/)
