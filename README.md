@@ -22,14 +22,14 @@ $$\log(1/C) = k_1 \pi + k_2 \sigma + k_3$$
 
 where $\pi$ stands for the partition constant, $\sigma$ stands for the Hammett constant, and $k_1$, $k_2$ and $k_3$ are obtained via the least squares. ([Hansch, 1962](https://doi.org/10.1021/ar50020a002))
 
-This model can be further generalized as
+This model can be further generalized as:
 
 $$Activity = f(property_1, propterty_2, ...) + error$$
 
 the $f$ here can be either a linear model or a very complex neural network.
 
 ## Dataset
-The dataset is organized as
+The dataset is organized as:
 
 | SMILES             | Target |
 |--------------------|--------|
@@ -37,7 +37,7 @@ The dataset is organized as
 | CC1OC1P(=O)(O)O    | 0      |
 | ...                | ...    |
 
-here 1 stands for the CNS drugs and 0 stands for non-CNS drugs. There are a total of 701 data in the training set and 368 data in the test set.
+Here 1 stands for the CNS drugs and 0 stands for non-CNS drugs. There are a total of 701 data in the training set and 368 data in the test set.
 
 ## Methods
 
