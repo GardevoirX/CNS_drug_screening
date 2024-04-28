@@ -5,6 +5,7 @@ This repo holds the code of the competition "Central Nervous System (CNS) drug d
 ### Requirements
 - Python 3.11
 - Conda environment (Recommended)
+- CUDA 12.1 (Recommended, for PyTorch)
 
 ```shell
 git clone https://github.com/GardevoirX/CNS_drug_screening.git
