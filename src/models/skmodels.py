@@ -1,7 +1,7 @@
 from sklearn.linear_model import LogisticRegression
-from ._abc import ABC
+from ._abc import SKLearnModelsABC
 
-class LogisticRegressionModel(SkLearnModelsABC):
+class LogisticRegressionModel(SKLearnModelsABC):
     def __init__(self, penalty='l2', tol=0.0001, C=1.0, fit_intercept=True,
                  class_weight=None, solver='lbfgs', max_iter=100, verbose=0,
                  n_jobs=None, l1_ratio=None):

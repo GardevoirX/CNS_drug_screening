@@ -1,6 +1,6 @@
 from abc import ABC
 
-class SkLearnModelsABC(ABC):
+class SKLearnModelsABC(ABC):
     def __init__(self, ):
         self.model = ...
     
