@@ -1,5 +1,17 @@
-# CNS_drug_screening
+# Central Nervous System (CNS) Drug Development: Drug Screening and Optimization
 This repo holds the code of the competition "Central Nervous System (CNS) drug development: drug screening and optimization" and serves as a semester project of "AI for Chemistry" (CH-457).
+
+## Quickstart
+### Requirements
+- Python 3.11
+- Conda environment (Recommended)
+
+```shell
+git clone https://github.com/GardevoirX/CNS_drug_screening.git
+cd CNS_drug_screening
+pip install --upgrade pip
+pip install -r requirements.txt
+```
 
 ## Introduction
 The treatment of central nervous system (CNS) diseases is very tricky due to the existence of the blood-brain barrier (BBB). The BBB is a highly selective barrier between the circulatory system and the CNS, which protects the brain from harmful substances in the blood while also keeping the drugs against CNS diseases from the focus of infection. Near 98% of small molecular drugs and almost all macromolecular drugs cannot pass that barrier.
@@ -10,14 +22,14 @@ $$\log(1/C) = k_1 \pi + k_2 \sigma + k_3$$
 
 where $\pi$ stands for the partition constant, $\sigma$ stands for the Hammett constant, and $k_1$, $k_2$ and $k_3$ are obtained via the least squares. ([Hansch, 1962](https://doi.org/10.1021/ar50020a002))
 
-This model can be further generalized as
+This model can be further generalized as:
 
 $$Activity = f(property_1, propterty_2, ...) + error$$
 
 the $f$ here can be either a linear model or a very complex neural network.
 
 ## Dataset
-The dataset is organized as
+The dataset is organized as:
 
 | SMILES             | Target |
 |--------------------|--------|
@@ -25,7 +37,7 @@ The dataset is organized as
 | CC1OC1P(=O)(O)O    | 0      |
 | ...                | ...    |
 
-here 1 stands for the CNS drugs and 0 stands for non-CNS drugs. There are a total of 701 data in the training set and 368 data in the test set.
+Here 1 stands for the CNS drugs and 0 stands for non-CNS drugs. There are a total of 701 data in the training set and 368 data in the test set.
 
 ## Methods
 
