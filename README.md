@@ -1,4 +1,4 @@
-# CNS_drug_screening
+# Central Nervous System (CNS) Drug Development: Drug Screening and Optimization
 This repo holds the code of the competition "Central Nervous System (CNS) drug development: drug screening and optimization" and serves as a semester project of "AI for Chemistry" (CH-457).
 
 ## Quickstart
