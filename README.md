@@ -11,6 +11,7 @@ This repo holds the code of the competition "Central Nervous System (CNS) drug d
 git clone https://github.com/GardevoirX/CNS_drug_screening.git
 cd CNS_drug_screening
 pip install --upgrade pip
+pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu121
 pip install -r requirements.txt
 ```
 
