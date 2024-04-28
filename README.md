@@ -1,6 +1,18 @@
 # CNS_drug_screening
 This repo holds the code of the competition "Central Nervous System (CNS) drug development: drug screening and optimization" and serves as a semester project of "AI for Chemistry" (CH-457).
 
+## Quickstart
+### Requirements
+- Python 3.11
+- Conda environment (Recommended)
+
+```shell
+git clone https://github.com/GardevoirX/CNS_drug_screening.git
+cd CNS_drug_screening
+pip install --upgrade pip
+pip install -r requirements.txt
+```
+
 ## Introduction
 The treatment of central nervous system (CNS) diseases is very tricky due to the existence of the blood-brain barrier (BBB). The BBB is a highly selective barrier between the circulatory system and the CNS, which protects the brain from harmful substances in the blood while also keeping the drugs against CNS diseases from the focus of infection. Near 98% of small molecular drugs and almost all macromolecular drugs cannot pass that barrier.
 
