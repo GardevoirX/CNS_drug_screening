@@ -14,6 +14,12 @@ pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
+### Test
+``` shell
+cd CNS_drug_screening
+pytest
+```
+
 ## Introduction
 The treatment of central nervous system (CNS) diseases is very tricky due to the existence of the blood-brain barrier (BBB). The BBB is a highly selective barrier between the circulatory system and the CNS, which protects the brain from harmful substances in the blood while also keeping the drugs against CNS diseases from the focus of infection. Near 98% of small molecular drugs and almost all macromolecular drugs cannot pass that barrier.
 
