@@ -1,3 +1,5 @@
+import pytest
+
 from src.models import AVAILABLE_MODELS
 
 TEST_DATA = [
@@ -16,10 +18,10 @@ TEST_LABELS = [
     1
 ]
 
-def test_models():
-    for model in AVAILABLE_MODELS:
-        model = model()
-        print(model)
-        model.fit(TEST_DATA, TEST_LABELS)
-        result = model.predict(TEST_DATA)
-        assert len(result) == 5
+
+@pytest.mark.parametrize("test_model", AVAILABLE_MODELS)
+def test_models(test_model):
+    model = test_model()
+    model.fit(TEST_DATA, TEST_LABELS)
+    result = model.predict(TEST_DATA)
+    assert len(result) == 5
