@@ -1,4 +1,5 @@
 from rdkit import Chem
+from rdkit.Chem import AllChem
 from rdkit.Chem.Descriptors import ExactMolWt, MolLogP, TPSA, NumHAcceptors, NumHDonors, NumRotatableBonds, NumAromaticRings
 from rdkit.Chem.rdFreeSASA import CalcSASA, classifyAtoms
 
@@ -15,7 +16,7 @@ class logP(DescriptorsABC):
         mol = Chem.MolFromSmiles(SMILES)
         return [MolLogP(mol)]
 
-class TPSA(DescriptorsABC):
+class TopoPSA(DescriptorsABC):
     """ topological polar surface area (TPSA) """
     def __call__(self, SMILES):
         mol = Chem.MolFromSmiles(SMILES)
@@ -31,8 +32,10 @@ class SASA(DescriptorsABC):
     """ solvent accessible surface area (SASA) """
     def __call__(self, SMILES):
         mol = Chem.MolFromSmiles(SMILES)
-        radius = classifyAtoms(mol)
-        return [CalcSASA(mol, radius)]
+        molH = Chem.AddHs(mol)
+        AllChem.EmbedMolecule(molH)
+        radius = classifyAtoms(molH)
+        return [CalcSASA(molH, radius)]
 
 class RotBond(DescriptorsABC):
     """ number of rotatable bonds """
