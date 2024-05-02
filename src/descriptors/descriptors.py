@@ -9,45 +9,39 @@ class MolWt(DescriptorsABC):
         mol = Chem.MolFromSmiles(SMILES)
         return [ExactMolWt(mol)]
 
-""" logP, partition coefficient (oil/ water) """
-
 class logP(DescriptorsABC):
+    """ logP, partition coefficient (oil/ water) """
     def __call__(self, SMILES):
         mol = Chem.MolFromSmiles(SMILES)
         return [MolLogP(mol)]
-    
-""" topological polar surface area (TPSA) """
 
 class TPSA(DescriptorsABC):
+    """ topological polar surface area (TPSA) """
     def __call__(self, SMILES):
         mol = Chem.MolFromSmiles(SMILES)
         return [TPSA(mol)]
 
-""" numbers related to H-Bonds (like donor, acceptor) """
-
 class HBonds(DescriptorsABC):
+    """ numbers related to H-Bonds (like donor, acceptor) """
     def __call__(self, SMILES):
         mol = Chem.MolFromSmiles(SMILES)
         return [NumHAcceptors(mol), NumHDonors(mol)]
 
-""" solvent accessible surface area (SASA) """
-
 class SASA(DescriptorsABC):
+    """ solvent accessible surface area (SASA) """
     def __call__(self, SMILES):
         mol = Chem.MolFromSmiles(SMILES)
         radius = classifyAtoms(mol)
         return [CalcSASA(mol, radius)]
 
-""" number of rotatable bonds """
-
 class RotBond(DescriptorsABC):
+    """ number of rotatable bonds """
     def __call__(self, SMILES):
         mol = Chem.MolFromSmiles(SMILES)
         return [NumRotatableBonds(mol)]
 
-""" number of aromatic rings. """
-
 class AromaRing(DescriptorsABC):
+    """ number of aromatic rings. """
     def __call__(self, SMILES):
         mol = Chem.MolFromSmiles(SMILES)
         return [NumAromaticRings(mol)]
