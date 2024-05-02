@@ -1,7 +1,7 @@
 from .descriptors import (
-    MolWt,
+    MolWt, logP, TopoPSA, HBonds, SASA, RotBond, AromaRing
     )
 
 AVAILABLE_DESCRIPTORS = [
-    MolWt,
+    MolWt, logP, TopoPSA, HBonds, SASA, RotBond, AromaRing
 ]

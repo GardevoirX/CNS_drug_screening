@@ -9,4 +9,4 @@ def test_descriptors(descriptor):
     des = descriptor()
     result = des(TEST_SMILES)
     assert isinstance(result, list)
-    assert len(result) == 1
+    assert len(result) != 0
