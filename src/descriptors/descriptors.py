@@ -5,6 +5,17 @@ from rdkit.Chem.rdFreeSASA import CalcSASA, classifyAtoms
 
 from ._abc import DescriptorsABC
 
+class DescriptorGenerator(DescriptorsABC):
+    def __init__(self, descriptors: list):
+        self.descriptors = descriptors
+
+    def __call__(self, SMILES):
+        results = []
+        for descriptor in self.descriptors:
+            d = descriptor()
+            results += d(SMILES)
+        return results
+
 class MolWt(DescriptorsABC):
     def __call__(self, SMILES):
         mol = Chem.MolFromSmiles(SMILES)
