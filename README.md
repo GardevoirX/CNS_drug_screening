@@ -54,3 +54,19 @@ Descriptors are mainly calculated with the help of the [descriptor module of RDK
 
 ### Models
 Models can be simple models provided by [scikit-learn](https://scikit-learn.org/stable/) or complex models build by [PyTorch](https://pytorch.org/)
+
+#### Performance
+|Model | F2-score |
+|------|----------|
+|Logistic|0.734   |
+|Linear|0.734     |
+|Ridge |0.734     |
+|Lasso |0.625     |
+|ElasticNet|0.601 |
+|Bayesian|0.731   |
+|SGD   |0.459     |
+|Kernel|0.604     |
+|SVC   |0.638     |
+|KNN   |0.594     |
+|KMeans|0.048     |
+|GMM   |0.000     |

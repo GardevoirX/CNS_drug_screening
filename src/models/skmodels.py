@@ -25,7 +25,7 @@ class LogisticRegressionModel(SKLearnModelsABC):
         fit_intercept=True,
         class_weight=None,
         solver="lbfgs",
-        max_iter=100,
+        max_iter=1000,
         l1_ratio=None
     ):
         self.model = LogisticRegression(
