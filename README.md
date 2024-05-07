@@ -70,3 +70,6 @@ Models can be simple models provided by [scikit-learn](https://scikit-learn.org/
 |KNN   |0.594     |
 |KMeans|0.048     |
 |GMM   |0.000     |
+
+## References
+1. https://bohrium.dp.tech/competitions/9169114995?tab=datasets (You can change the language in the menu hiding behind the up-right icon)
