@@ -6,6 +6,11 @@ from rdkit.Chem.rdFreeSASA import CalcSASA, classifyAtoms
 from ._abc import DescriptorsABC
 
 class DescriptorGenerator(DescriptorsABC):
+    """ generate specified descriptors from SMILES
+
+    Args:
+        descriptors (list): list of descriptors
+    """
     def __init__(self, descriptors: list):
         self.descriptors = descriptors
 
