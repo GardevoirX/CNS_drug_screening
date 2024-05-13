@@ -21,7 +21,7 @@ class LogisticRegressionModel(SKLearnModelsABC):
         self,
         penalty="l2",
         tol=0.0001,
-        C=1.0,
+        C=0.01319,
         fit_intercept=True,
         class_weight=None,
         solver="lbfgs",
