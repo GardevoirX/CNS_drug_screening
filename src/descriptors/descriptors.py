@@ -99,3 +99,12 @@ class BondFeatures(DescriptorsABC):
         bond_count = list(bond_count.values())
 
         return [mol.GetNumBonds()] + bond_count
+
+class MolVolume(DescriptorsABC):
+    """Volume of the molecule"""
+
+    def __call__(self, SMILES):
+        mol = Chem.MolFromSmiles(SMILES)
+        molH = Chem.AddHs(mol)
+        AllChem.EmbedMolecule(molH)
+        return [AllChem.ComputeMolVolume(molH)]
