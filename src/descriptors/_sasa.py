@@ -68,13 +68,10 @@ class SASA(DescriptorsABC):
         surface area of the molecule with polar and non-polar atoms
     """
 
-    def __call__(self, SMILES):
-        mol = Chem.MolFromSmiles(SMILES)
-        molH = Chem.AddHs(mol)
-        AllChem.EmbedMolecule(molH)
-        radius = _classifyAtoms(molH)
+    def __call__(self, mol):
+        radius = _classifyAtoms(mol)
         return [
-            CalcSASA(molH, radius),
-            CalcSASA(molH, radius, query=MakeFreeSasaAPolarAtomQuery()),
-            CalcSASA(molH, radius, query=MakeFreeSasaPolarAtomQuery()),
+            CalcSASA(mol, radius),
+            CalcSASA(mol, radius, query=MakeFreeSasaAPolarAtomQuery()),
+            CalcSASA(mol, radius, query=MakeFreeSasaPolarAtomQuery()),
         ]

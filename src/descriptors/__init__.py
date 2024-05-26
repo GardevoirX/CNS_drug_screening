@@ -1,9 +1,48 @@
 from .descriptors import DescriptorGenerator
 from .descriptors import (
-    MolWt, logP, TopoPSA, HBonds, RotBond, AromaRing, MolVolume
-    )
+    MolWt,
+    MolAbsCharge,
+    NumHeavyAtoms,
+    logP,
+    TopoPSA,
+    HBonds,
+    RotBond,
+    NumValenceElectron,
+    NumMaxAbsPartialCharge,
+    NumMinAbsPartialCharge,
+    AromaRing,
+    MolVolume,
+    MorganFingerPrint,
+    MACCSFingerPrint,
+    BCUT,
+    GetAWay,
+    GetFeatureInvariants,
+    USR,
+    WHIM,
+    MORSE,
+    USRCAT,
+    TopologicalTorsionFingerprint,
+    MQNs,
+    PEOE_VSA,
+    SMR_VSA,
+    SlogP_VSA,
+    Autocorr2D,
+)
 from ._sasa import SASA
 
 AVAILABLE_DESCRIPTORS = [
-    MolWt, logP, TopoPSA, HBonds, SASA, RotBond, AromaRing, MolVolume
+    MolWt,
+    MolAbsCharge,
+    NumMaxAbsPartialCharge,
+    NumMinAbsPartialCharge,
+    RotBond,
+    NumHeavyAtoms,
+    TopologicalTorsionFingerprint,
+    MorganFingerPrint,
+    USR,
+    USRCAT,
+    MQNs,
+    PEOE_VSA,
+    SlogP_VSA,
+    Autocorr2D,
 ]
