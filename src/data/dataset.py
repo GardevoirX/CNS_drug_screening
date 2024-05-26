@@ -32,14 +32,20 @@ class CNSDataset(Dataset):
             self._processed_data = self.raw_data["SMILES"]
         else:
             self._processed_data = Tensor(
-                [self.transform(smiles) for smiles in track(self.raw_data["SMILES"])]
+                [
+                    self.transform(smiles)
+                    for smiles in track(
+                        self.raw_data["SMILES"],
+                        description="Calculating descriptors...",
+                    )
+                ]
             ).to(self.device)
         if self.target_transform is None:
             self._processed_label = self.raw_data["TARGET"]
         else:
-            self._processed_label = Tensor([
-                self.target_transform(label) for label in self.raw_data["TARGET"]
-            ]).to(self.device)
+            self._processed_label = Tensor(
+                [self.target_transform(label) for label in self.raw_data["TARGET"]]
+            ).to(self.device)
 
     @property
     def SMILES(self):
