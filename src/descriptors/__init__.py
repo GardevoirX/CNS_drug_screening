@@ -1,6 +1,7 @@
 from .descriptors import DescriptorGenerator
 from .descriptors import (
     MolWt,
+    MolAbsCharge,
     logP,
     TopoPSA,
     HBonds,
@@ -26,12 +27,15 @@ from ._sasa import SASA
 
 AVAILABLE_DESCRIPTORS = [
     MolWt,
+    MolAbsCharge,
+    RotBond,
     # SASA,
     # logP,
     # TopoPSA,
     # MolVolume,
     # WHIM,
-    MORSE,
+    # MORSE,
+    # USR,
     USRCAT,
     MQNs,
     PEOE_VSA,

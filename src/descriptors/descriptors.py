@@ -25,7 +25,8 @@ from rdkit.Chem.rdMolDescriptors import (
     MQNs_,
     PEOE_VSA_,
     SMR_VSA_,
-    SlogP_VSA_
+    SlogP_VSA_,
+    CalcAUTOCORR2D
 )
 
 from ._abc import DescriptorsABC
@@ -55,6 +56,11 @@ class DescriptorGenerator(DescriptorsABC):
 class MolWt(DescriptorsABC):
     def __call__(self, mol):
         return [ExactMolWt(mol)]
+
+
+class MolAbsCharge(DescriptorsABC):
+    def __call__(self, mol):
+        return [Chem.rdmolops.GetFormalCharge(mol)]
 
 
 class logP(DescriptorsABC):
@@ -199,4 +205,7 @@ class SlogP_VSA(DescriptorsABC):
     """SMR_VSA descriptor, 10 continuous features"""
     def __call__(self, mol):
         return SlogP_VSA_(mol)
-    
+
+class Autocorr2D(DescriptorsABC):
+    def __call__(self, mol):
+        return CalcAUTOCORR2D(mol)
