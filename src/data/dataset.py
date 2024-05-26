@@ -54,3 +54,9 @@ class CNSDataset(Dataset):
         if any(mask := any(isnan(self._processed_data), axis=0)):
             print("NaN in descriptors, remove it")
         self._processed_data = self._processed_data[:, ~mask]
+
+    def normalize(self, max, min):
+        self._processed_data = (self._processed_data - min) / (max - min)
+        if any(mask := any(isnan(self._processed_data), axis=0)):
+            print("NaN in descriptors, remove it")
+        self._processed_data = self._processed_data[:, ~mask]

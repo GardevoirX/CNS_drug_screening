@@ -2,10 +2,14 @@ from .descriptors import DescriptorGenerator
 from .descriptors import (
     MolWt,
     MolAbsCharge,
+    NumHeavyAtoms,
     logP,
     TopoPSA,
     HBonds,
     RotBond,
+    NumValenceElectron,
+    NumMaxAbsPartialCharge,
+    NumMinAbsPartialCharge,
     AromaRing,
     MolVolume,
     MorganFingerPrint,
@@ -21,24 +25,33 @@ from .descriptors import (
     MQNs,
     PEOE_VSA,
     SMR_VSA,
-    SlogP_VSA
+    SlogP_VSA,
+    Autocorr2D
 )
 from ._sasa import SASA
 
 AVAILABLE_DESCRIPTORS = [
     MolWt,
     MolAbsCharge,
+    # NumValenceElectron,
+    NumMaxAbsPartialCharge,
+    NumMinAbsPartialCharge,
     RotBond,
+    NumHeavyAtoms,
     # SASA,
     # logP,
     # TopoPSA,
+    # HBonds,
+    # AromaRing,
     # MolVolume,
+    MorganFingerPrint,
     # WHIM,
     # MORSE,
-    # USR,
+    USR,
     USRCAT,
     MQNs,
     PEOE_VSA,
     # SMR_VSA,
-    SlogP_VSA
+    SlogP_VSA,
+    Autocorr2D,
 ]

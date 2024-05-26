@@ -10,6 +10,9 @@ from rdkit.Chem.Descriptors import (
     NumHDonors,
     NumRotatableBonds,
     NumAromaticRings,
+    NumValenceElectrons,
+    MaxAbsPartialCharge,
+    MinAbsPartialCharge
 )
 from rdkit.Chem.rdMolDescriptors import (
     GetMorganFingerprintAsBitVect,
@@ -26,7 +29,8 @@ from rdkit.Chem.rdMolDescriptors import (
     PEOE_VSA_,
     SMR_VSA_,
     SlogP_VSA_,
-    CalcAUTOCORR2D
+    CalcAUTOCORR2D,
+    CalcNumHeavyAtoms
 )
 
 from ._abc import DescriptorsABC
@@ -61,6 +65,26 @@ class MolWt(DescriptorsABC):
 class MolAbsCharge(DescriptorsABC):
     def __call__(self, mol):
         return [Chem.rdmolops.GetFormalCharge(mol)]
+
+
+class NumHeavyAtoms(DescriptorsABC):
+    def __call__(self, mol):
+        return [CalcNumHeavyAtoms(mol)]
+
+
+class NumValenceElectron(DescriptorsABC):
+    def __call__(self, mol):
+        return [NumValenceElectrons(mol)]
+
+
+class NumMaxAbsPartialCharge(DescriptorsABC):
+    def __call__(self, mol):
+        return [MaxAbsPartialCharge(mol)]
+
+
+class NumMinAbsPartialCharge(DescriptorsABC):
+    def __call__(self, mol):
+        return [MinAbsPartialCharge(mol)]
 
 
 class logP(DescriptorsABC):
@@ -128,7 +152,7 @@ class TopologicalTorsionFingerprint(DescriptorsABC):
 class MorganFingerPrint(DescriptorsABC):
 
     def __call__(self, mol):
-        fp = GetMorganFingerprintAsBitVect(mol, 5, nBits=2048)
+        fp = GetMorganFingerprintAsBitVect(mol, 6, nBits=2048)
         fp = fp.ToBitString()
         return [int(item) for item in list(fp)]
 
