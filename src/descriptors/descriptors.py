@@ -20,6 +20,12 @@ from rdkit.Chem.rdMolDescriptors import (
     CalcWHIM,
     GetFeatureInvariants,
     GetUSR,
+    GetUSRCAT,
+    GetHashedTopologicalTorsionFingerprintAsBitVect,
+    MQNs_,
+    PEOE_VSA_,
+    SMR_VSA_,
+    SlogP_VSA_
 )
 
 from ._abc import DescriptorsABC
@@ -72,14 +78,6 @@ class HBonds(DescriptorsABC):
         return [NumHAcceptors(mol), NumHDonors(mol)]
 
 
-class SASA(DescriptorsABC):
-    """solvent accessible surface area (SASA)"""
-
-    def __call__(self, mol):
-        radius = classifyAtoms(mol)
-        return [CalcSASA(mol, radius)]
-
-
 class RotBond(DescriptorsABC):
     """number of rotatable bonds"""
 
@@ -113,6 +111,13 @@ class MolVolume(DescriptorsABC):
     def __call__(self, mol):
         return [AllChem.ComputeMolVolume(mol)]
 
+
+class TopologicalTorsionFingerprint(DescriptorsABC):
+
+    def __call__(self, mol):
+        fp = GetHashedTopologicalTorsionFingerprintAsBitVect(mol, nBits=2048)
+        fp = fp.ToBitString()
+        return [int(item) for item in list(fp)]
 
 class MorganFingerPrint(DescriptorsABC):
 
@@ -160,7 +165,38 @@ class USR(DescriptorsABC):
         return GetUSR(mol)
 
 
+class USRCAT(DescriptorsABC):
+    """USRCAT descriptor, 60 continuous features"""
+    def __call__(self, mol):
+        return GetUSRCAT(mol)
+
+
 class MORSE(DescriptorsABC):
     """MORSE descriptor, 224 continuous features"""
     def __call__(self, mol):
         return CalcMORSE(mol)
+
+
+class MQNs(DescriptorsABC):
+    """MQNs descriptor, 42 discontinuous features"""
+    def __call__(self, mol):
+        return MQNs_(mol)
+
+
+class PEOE_VSA(DescriptorsABC):
+    """PEOE_VSA descriptor, 14 continuous features"""
+    def __call__(self, mol):
+        return PEOE_VSA_(mol)
+
+
+class SMR_VSA(DescriptorsABC):
+    """SMR_VSA descriptor, 10 continuous features"""
+    def __call__(self, mol):
+        return SMR_VSA_(mol)
+
+
+class SlogP_VSA(DescriptorsABC):
+    """SMR_VSA descriptor, 10 continuous features"""
+    def __call__(self, mol):
+        return SlogP_VSA_(mol)
+    
