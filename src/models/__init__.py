@@ -10,7 +10,7 @@ from .skmodels import (
     SVCModel,
     KNNModel,
     KmeansModel,
-    GaussianmixtureModel
+    GaussianmixtureModel,
 )
 
 AVAILABLE_MODELS = [
@@ -25,5 +25,5 @@ AVAILABLE_MODELS = [
     SVCModel,
     KNNModel,
     KmeansModel,
-    GaussianmixtureModel
+    GaussianmixtureModel,
 ]

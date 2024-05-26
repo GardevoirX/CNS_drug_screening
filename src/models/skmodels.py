@@ -26,7 +26,7 @@ class LogisticRegressionModel(SKLearnModelsABC):
         class_weight=None,
         solver="lbfgs",
         max_iter=1000,
-        l1_ratio=None
+        l1_ratio=None,
     ):
         self.model = LogisticRegression(
             penalty=penalty,
@@ -36,57 +36,48 @@ class LogisticRegressionModel(SKLearnModelsABC):
             class_weight=class_weight,
             solver=solver,
             max_iter=max_iter,
-            l1_ratio=l1_ratio
+            l1_ratio=l1_ratio,
         )
 
 
-class LinearRegressionModel(SKLearnModelsABC): #least squares
+class LinearRegressionModel(SKLearnModelsABC):  # least squares
     def __init__(self, fit_intercept=True):
         self.model = LinearRegression(fit_intercept=fit_intercept)
 
 
-class RidgeRegressionModel(SKLearnModelsABC): #ridge regression
+class RidgeRegressionModel(SKLearnModelsABC):  # ridge regression
     def __init__(self, alpha=1.0, fit_intercept=True, max_iter=None, tol=0.001):
         self.model = Ridge(
-            alpha=alpha,
-            fit_intercept=fit_intercept,
-            max_iter=max_iter,
-            tol=tol
+            alpha=alpha, fit_intercept=fit_intercept, max_iter=max_iter, tol=tol
         )
 
 
-class LassoRegressionModel(SKLearnModelsABC): #lasso regression
+class LassoRegressionModel(SKLearnModelsABC):  # lasso regression
     def __init__(self, alpha=1.0, fit_intercept=True, max_iter=1000, tol=0.001):
         self.model = Lasso(
-            alpha=alpha,
-            fit_intercept=fit_intercept,
-            max_iter=max_iter,
-            tol=tol)   
+            alpha=alpha, fit_intercept=fit_intercept, max_iter=max_iter, tol=tol
+        )
 
-class ElasticNetRegressionModel(SKLearnModelsABC):  #elastic-net
+
+class ElasticNetRegressionModel(SKLearnModelsABC):  # elastic-net
     def __init__(
-        self,
-        alpha=1.0,
-        l1_ratio=0.5,
-        fit_intercept=True,
-        max_iter=1000,
-        tol=0.001
+        self, alpha=1.0, l1_ratio=0.5, fit_intercept=True, max_iter=1000, tol=0.001
     ):
         self.model = ElasticNet(
             alpha=alpha,
             l1_ratio=l1_ratio,
             fit_intercept=fit_intercept,
             max_iter=max_iter,
-            tol=tol
+            tol=tol,
         )
 
 
-class BayesianRidgeRegressionModel(SKLearnModelsABC):  #bayesian regression
+class BayesianRidgeRegressionModel(SKLearnModelsABC):  # bayesian regression
     def __init__(self, max_iter=300, tol=0.001):
         self.model = BayesianRidge(max_iter=max_iter, tol=tol)
 
 
-class SGDClassifierModel(SKLearnModelsABC):  #sgd classifier
+class SGDClassifierModel(SKLearnModelsABC):  # sgd classifier
     def __init__(
         self,
         loss="hinge",
@@ -98,7 +89,7 @@ class SGDClassifierModel(SKLearnModelsABC):  #sgd classifier
         tol=0.001,
         shuffle=True,
         verbose=0,
-        epsilon=0.1
+        epsilon=0.1,
     ):
         self.model = SGDClassifier(
             loss=loss,
@@ -110,18 +101,18 @@ class SGDClassifierModel(SKLearnModelsABC):  #sgd classifier
             tol=tol,
             shuffle=shuffle,
             verbose=verbose,
-            epsilon=epsilon
+            epsilon=epsilon,
         )
 
 
-class KernelRidgeModel(SKLearnModelsABC):  #kernel ridge
+class KernelRidgeModel(SKLearnModelsABC):  # kernel ridge
     def __init__(self, alpha=1.0, kernel="linear", degree=3, gamma=None, coef0=1.0):
         self.model = KernelRidge(
             alpha=alpha, kernel=kernel, degree=degree, gamma=gamma, coef0=coef0
         )
 
 
-class SVCModel(SKLearnModelsABC):  #SVM
+class SVCModel(SKLearnModelsABC):  # SVM
     def __init__(
         self,
         C=1.0,
@@ -131,7 +122,7 @@ class SVCModel(SKLearnModelsABC):  #SVM
         coef0=0.0,
         shrinking=True,
         probability=False,
-        tol=0.001
+        tol=0.001,
     ):
         self.model = SVC(
             C=C,
@@ -141,29 +132,24 @@ class SVCModel(SKLearnModelsABC):  #SVM
             coef0=coef0,
             shrinking=shrinking,
             probability=probability,
-            tol=tol
+            tol=tol,
         )
 
 
-class KNNModel(SKLearnModelsABC):  #KNN
+class KNNModel(SKLearnModelsABC):  # KNN
     def __init__(
-        self,
-        n_neighbors=5,
-        weights="uniform",
-        algorithm="auto",
-        leaf_size=30,
-        p=2
+        self, n_neighbors=5, weights="uniform", algorithm="auto", leaf_size=30, p=2
     ):
         self.model = KNeighborsClassifier(
             n_neighbors=n_neighbors,
             weights=weights,
             algorithm=algorithm,
             leaf_size=leaf_size,
-            p=p
+            p=p,
         )
 
 
-class KmeansModel(SKLearnModelsABC): #K-means
+class KmeansModel(SKLearnModelsABC):  # K-means
     def __init__(
         self, n_clusters=2, init="k-means++", max_iter=300, n_init=10, random_state=None
     ):
@@ -176,7 +162,7 @@ class KmeansModel(SKLearnModelsABC): #K-means
         )
 
 
-class GaussianmixtureModel(SKLearnModelsABC): #GMM
+class GaussianmixtureModel(SKLearnModelsABC):  # GMM
     def __init__(
         self,
         n_components=1,
@@ -192,5 +178,5 @@ class GaussianmixtureModel(SKLearnModelsABC): #GMM
             tol=tol,
             reg_covar=reg_covar,
             max_iter=max_iter,
-            n_init=n_init
+            n_init=n_init,
         )

@@ -26,33 +26,23 @@ from .descriptors import (
     PEOE_VSA,
     SMR_VSA,
     SlogP_VSA,
-    Autocorr2D
+    Autocorr2D,
 )
 from ._sasa import SASA
 
 AVAILABLE_DESCRIPTORS = [
     MolWt,
     MolAbsCharge,
-    # NumValenceElectron,
     NumMaxAbsPartialCharge,
     NumMinAbsPartialCharge,
     RotBond,
     NumHeavyAtoms,
-    # SASA,
-    # logP,
-    # TopoPSA,
-    # HBonds,
-    # AromaRing,
-    # MolVolume,
     TopologicalTorsionFingerprint,
     MorganFingerPrint,
-    # WHIM,
-    # MORSE,
     USR,
     USRCAT,
     MQNs,
     PEOE_VSA,
-    # SMR_VSA,
     SlogP_VSA,
     Autocorr2D,
 ]

@@ -12,7 +12,7 @@ from rdkit.Chem.Descriptors import (
     NumAromaticRings,
     NumValenceElectrons,
     MaxAbsPartialCharge,
-    MinAbsPartialCharge
+    MinAbsPartialCharge,
 )
 from rdkit.Chem.rdMolDescriptors import (
     GetMorganFingerprintAsBitVect,
@@ -30,7 +30,7 @@ from rdkit.Chem.rdMolDescriptors import (
     SMR_VSA_,
     SlogP_VSA_,
     CalcAUTOCORR2D,
-    CalcNumHeavyAtoms
+    CalcNumHeavyAtoms,
 )
 
 from ._abc import DescriptorsABC
@@ -149,6 +149,7 @@ class TopologicalTorsionFingerprint(DescriptorsABC):
         fp = fp.ToBitString()
         return [int(item) for item in list(fp)]
 
+
 class MorganFingerPrint(DescriptorsABC):
 
     def __call__(self, mol):
@@ -171,12 +172,14 @@ class BCUT(DescriptorsABC):
 
 class GetAWay(DescriptorsABC):
     """GETAWAY descriptor, 273 continuous features"""
+
     def __call__(self, mol):
         return CalcGETAWAY(mol)
 
 
 class WHIM(DescriptorsABC):
     """WHIM descriptor, 114 continuous features"""
+
     def __call__(self, mol):
         results = np.array(CalcWHIM(mol))
         results[np.isnan(results)] = 0.0
@@ -191,44 +194,52 @@ class Invariants(DescriptorsABC):
 
 class USR(DescriptorsABC):
     """USR descriptor, 12 continuous features"""
+
     def __call__(self, mol):
         return GetUSR(mol)
 
 
 class USRCAT(DescriptorsABC):
     """USRCAT descriptor, 60 continuous features"""
+
     def __call__(self, mol):
         return GetUSRCAT(mol)
 
 
 class MORSE(DescriptorsABC):
     """MORSE descriptor, 224 continuous features"""
+
     def __call__(self, mol):
         return CalcMORSE(mol)
 
 
 class MQNs(DescriptorsABC):
     """MQNs descriptor, 42 discontinuous features"""
+
     def __call__(self, mol):
         return MQNs_(mol)
 
 
 class PEOE_VSA(DescriptorsABC):
     """PEOE_VSA descriptor, 14 continuous features"""
+
     def __call__(self, mol):
         return PEOE_VSA_(mol)
 
 
 class SMR_VSA(DescriptorsABC):
     """SMR_VSA descriptor, 10 continuous features"""
+
     def __call__(self, mol):
         return SMR_VSA_(mol)
 
 
 class SlogP_VSA(DescriptorsABC):
     """SMR_VSA descriptor, 10 continuous features"""
+
     def __call__(self, mol):
         return SlogP_VSA_(mol)
+
 
 class Autocorr2D(DescriptorsABC):
     def __call__(self, mol):
