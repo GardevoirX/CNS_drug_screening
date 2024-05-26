@@ -16,7 +16,7 @@ from .descriptors import (
     MACCSFingerPrint,
     BCUT,
     GetAWay,
-    GetFeatureInvariants,
+    Invariants,
     USR,
     WHIM,
     MORSE,
