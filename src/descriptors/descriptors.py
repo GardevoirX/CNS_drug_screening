@@ -145,7 +145,7 @@ class MolVolume(DescriptorsABC):
 class TopologicalTorsionFingerprint(DescriptorsABC):
 
     def __call__(self, mol):
-        fp = GetHashedTopologicalTorsionFingerprintAsBitVect(mol, nBits=2048)
+        fp = GetHashedTopologicalTorsionFingerprintAsBitVect(mol, nBits=1024)
         fp = fp.ToBitString()
         return [int(item) for item in list(fp)]
 

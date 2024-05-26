@@ -44,6 +44,7 @@ AVAILABLE_DESCRIPTORS = [
     # HBonds,
     # AromaRing,
     # MolVolume,
+    TopologicalTorsionFingerprint,
     MorganFingerPrint,
     # WHIM,
     # MORSE,
