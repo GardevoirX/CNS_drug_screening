@@ -31,18 +31,26 @@ from .descriptors import (
 from ._sasa import SASA
 
 AVAILABLE_DESCRIPTORS = [
+    # Human experts descriptors
     MolWt,
     MolAbsCharge,
     NumMaxAbsPartialCharge,
     NumMinAbsPartialCharge,
     RotBond,
     NumHeavyAtoms,
+
+    # High dimensional descriptors
+    # Topological fingerprint descriptors
     TopologicalTorsionFingerprint,
     MorganFingerPrint,
+    # Topological descriptors
     USR,
     USRCAT,
+    # Quantum descriptors
     MQNs,
+    # Physical descriptors on electrical properties and partition coefficients
     PEOE_VSA,
     SlogP_VSA,
+    # Topological descriptors
     Autocorr2D,
 ]

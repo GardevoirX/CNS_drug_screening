@@ -193,14 +193,15 @@ class Invariants(DescriptorsABC):
 
 
 class USR(DescriptorsABC):
-    """USR descriptor, 12 continuous features"""
+    """Ultrafast Shape Descriptor, 12 continuous features"""
 
     def __call__(self, mol):
         return GetUSR(mol)
 
 
 class USRCAT(DescriptorsABC):
-    """USRCAT descriptor, 60 continuous features"""
+    """Ultrafast Shape Recognition with Credo Atom Types descriptor,
+    60 continuous features"""
 
     def __call__(self, mol):
         return GetUSRCAT(mol)
@@ -214,14 +215,14 @@ class MORSE(DescriptorsABC):
 
 
 class MQNs(DescriptorsABC):
-    """MQNs descriptor, 42 discontinuous features"""
+    """Molecular Quantum Numbers descriptor, 42 discontinuous features"""
 
     def __call__(self, mol):
         return MQNs_(mol)
 
 
 class PEOE_VSA(DescriptorsABC):
-    """PEOE_VSA descriptor, 14 continuous features"""
+    """PEOE charge descriptor, 14 continuous features"""
 
     def __call__(self, mol):
         return PEOE_VSA_(mol)
@@ -242,5 +243,7 @@ class SlogP_VSA(DescriptorsABC):
 
 
 class Autocorr2D(DescriptorsABC):
+    """Autocorrelation 2D descriptor, descriptor of topological
+    molecular structure"""
     def __call__(self, mol):
         return CalcAUTOCORR2D(mol)
