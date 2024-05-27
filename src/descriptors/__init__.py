@@ -48,8 +48,9 @@ AVAILABLE_DESCRIPTORS = [
     USRCAT,
     # Quantum descriptors
     MQNs,
-    # Physical descriptors on electrical properties and partition coefficients
+    # Electrical properties descriptors
     PEOE_VSA,
+    # Partition coefficients descriptors
     SlogP_VSA,
     # Topological descriptors
     Autocorr2D,
