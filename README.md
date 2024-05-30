@@ -29,7 +29,7 @@ cd CNS_drug_screening
 pytest
 ```
 
-### Run
+### Train the model
 ``` shell
 python ./train.py
 ```
