@@ -63,11 +63,11 @@ Descriptors are mainly calculated with the help of the [descriptor module of RDK
 | Type | Descriptor| # of features|
 |:----:|:---------:|:------------:|
 | Molecular characteristics | MW, abs. net charge, abs. max./min. partial charge,<br /> # of rotatable bonds, # of heavy atoms| 6 |
-| Topological descriptors|USR, USR-CAT, 2D autocorrelation| 164 |
-| Quantum descriptor| MQM | 42 |
-| Electronegative descriptor| PEQE | 10 |
-| Partition coefficients| VSA-logP| 12 |
-| Topological fingerprints| topological torsion, Morgan fingerprints| 3072 (bits) |
+| Topological descriptors|[USR](https://www.rdkit.org/docs/source/rdkit.Chem.rdMolDescriptors.html#rdkit.Chem.rdMolDescriptors.GetUSR), [USR-CAT](https://www.rdkit.org/docs/source/rdkit.Chem.rdMolDescriptors.html#rdkit.Chem.rdMolDescriptors.GetUSRCAT), [2D autocorrelation](https://www.rdkit.org/docs/source/rdkit.Chem.rdMolDescriptors.html#rdkit.Chem.rdMolDescriptors.CalcAUTOCORR2D)| 164 |
+| Quantum descriptor| [MQM](https://www.rdkit.org/docs/source/rdkit.Chem.rdMolDescriptors.html#rdkit.Chem.rdMolDescriptors.MQNs_) | 42 |
+| Electronegative descriptor| [PEOE](https://www.rdkit.org/docs/source/rdkit.Chem.rdMolDescriptors.html#rdkit.Chem.rdMolDescriptors.PEOE_VSA_) | 10 |
+| Partition coefficients| [VSA-logP](https://www.rdkit.org/docs/source/rdkit.Chem.rdMolDescriptors.html#rdkit.Chem.rdMolDescriptors.SlogP_VSA_)| 12 |
+| Topological fingerprints| [topological torsion](https://www.rdkit.org/docs/source/rdkit.Chem.rdMolDescriptors.html#rdkit.Chem.rdMolDescriptors.GetHashedTopologicalTorsionFingerprintAsBitVect), [Morgan fingerprints](https://www.rdkit.org/docs/source/rdkit.Chem.rdMolDescriptors.html#rdkit.Chem.rdMolDescriptors.GetMorganFingerprintAsBitVect)| 3072 (bits) |
 
 In the real training process, some features are found to have only one value. These features are later removed and this leads to a total of 2912 features in the final scope.
 
