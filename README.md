@@ -18,6 +18,11 @@ pip3 install --pre torch torchvision torchaudio --index-url https://download.pyt
 pip install -r requirements.txt
 ```
 
+### Inference
+``` shell
+python ./inference.py --data_file your_smiles.csv
+```
+
 ### Test
 ``` shell
 cd CNS_drug_screening
