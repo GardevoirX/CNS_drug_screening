@@ -236,7 +236,7 @@ class SMR_VSA(DescriptorsABC):
 
 
 class SlogP_VSA(DescriptorsABC):
-    """SMR_VSA descriptor, 10 continuous features"""
+    """SlogP_VSA descriptor, 12 continuous features"""
 
     def __call__(self, mol):
         return SlogP_VSA_(mol)
