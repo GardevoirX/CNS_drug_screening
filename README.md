@@ -22,6 +22,11 @@ cd CNS_drug_screening
 pytest
 ```
 
+### Run
+``` shell
+python ./train.py
+```
+
 ## Introduction
 The treatment of central nervous system (CNS) diseases is very tricky due to the existence of the blood-brain barrier (BBB). The BBB is a highly selective barrier between the circulatory system and the CNS, which protects the brain from harmful substances in the blood while also keeping the drugs against CNS diseases from the focus of infection. Near 98% of small molecular drugs and almost all macromolecular drugs cannot pass that barrier.
 
@@ -46,12 +51,25 @@ The dataset is organized as:
 | CC1OC1P(=O)(O)O    | 0      |
 | ...                | ...    |
 
-Here 1 stands for the CNS drugs and 0 stands for non-CNS drugs. There are a total of 701 data in the training set and 368 data in the test set.
+Here 1 stands for the CNS drugs and 0 stands for non-CNS drugs. There are a total of 701 data in the training set and 368 data in the test set. Below is the composition of the dataset: 453 non-CNS drugs and 247 CNS drugs.
+
+![pie](https://github.com/GardevoirX/CNS_drug_screening/assets/92628709/71029b5a-a983-476c-9099-71ff6a933013)
+
 
 ## Methods
 
 ### Descriptors
-Descriptors are mainly calculated with the help of the [descriptor module of RDKit](https://www.rdkit.org/docs/source/rdkit.Chem.Descriptors.html).
+Descriptors are mainly calculated with the help of the [descriptor module of RDKit](https://www.rdkit.org/docs/source/rdkit.Chem.Descriptors.html). Here we use a total of 14 descriptors, which can be further categorized into 6 types
+| Type | Descriptor| # of features|
+|:----:|:---------:|:------------:|
+| Molecular characteristics | MW, abs. net charge, abs. max./min. partial charge,<br /> # of rotatable bonds, # of heavy atoms| 6 |
+| Topological descriptors|USR, USR-CAT, 2D autocorrelation| 164 |
+| Quantum descriptor| MQM | 42 |
+| Electronegative descriptor| PEQE | 10 |
+| Partition coefficients| VSA-logP| 12 |
+| Topological fingerprints| topological torsion, Morgan fingerprints| 3072 (bits) |
+
+In the real training process, some features are found to have only one value. These features are later removed and this leads to a total of 2912 features in the final scope.
 
 ### Models
 Models can be simple models provided by [scikit-learn](https://scikit-learn.org/stable/) or complex models build by [PyTorch](https://pytorch.org/)
