@@ -18,6 +18,11 @@ pip3 install --pre torch torchvision torchaudio --index-url https://download.pyt
 pip install -r requirements.txt
 ```
 
+### Inference
+``` shell
+python ./inference.py --data_file your_smiles.csv
+```
+
 ### Test
 ``` shell
 cd CNS_drug_screening
@@ -73,12 +78,16 @@ Descriptors are mainly calculated with the help of the [descriptor module of RDK
 
 In the real training process, some features are found to have only one value. These features are later removed leading to a total of 2912 features in the final scope.
 
+
+## Results
+
 ### Models
 Models can be simple models provided by [scikit-learn](https://scikit-learn.org/stable/) or complex models built by [PyTorch](https://pytorch.org/).
 
 Our final model is a perceptron with five hidden layers. The number of neurons in each layer is 3076, 2048, 1024, 512 and 128, respectively. Layers are all equipped with LayerNorm, ReLU activation function and dropout. The dropout rate varies, and is 0.8, 0.6, 0.4, 0.4, 0.4 for each layer. Below is a schematic figure of our model.
 
-![model](https://github.com/GardevoirX/CNS_drug_screening/assets/92628709/d9a62b22-9847-444a-8f29-f295da510137)
+![model](https://github.com/GardevoirX/CNS_drug_screening/assets/92628709/b8d97f84-2bee-4410-a762-cdec6cda68c8)
+
 
 Our model finally achieved an F2 score of .838 in the online test provided by the [Bohrium platform](https://bohrium.dp.tech/competitions/9169114995?tab=leaderboard).
 
