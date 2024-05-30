@@ -1,5 +1,7 @@
-[![Powered by RDKit](https://img.shields.io/badge/Powered%20by-RDKit-3838ff.svg?logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAFVBMVEXc3NwUFP8UPP9kZP+MjP+0tP////9ZXZotAAAAAXRSTlMAQObYZgAAAAFiS0dEBmFmuH0AAAAHdElNRQfmAwsPGi+MyC9RAAAAQElEQVQI12NgQABGQUEBMENISUkRLKBsbGwEEhIyBgJFsICLC0iIUdnExcUZwnANQWfApKCK4doRBsKtQFgKAQC5Ww1JEHSEkAAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyMi0wMy0xMVQxNToyNjo0NyswMDowMDzr2J4AAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjItMDMtMTFUMTU6MjY6NDcrMDA6MDBNtmAiAAAAAElFTkSuQmCC)](https://www.rdkit.org/)
+
 # Central Nervous System (CNS) Drug Development: Drug Screening and Optimization
+[![Powered by RDKit](https://img.shields.io/badge/Powered%20by-RDKit-3838ff.svg?logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAFVBMVEXc3NwUFP8UPP9kZP+MjP+0tP////9ZXZotAAAAAXRSTlMAQObYZgAAAAFiS0dEBmFmuH0AAAAHdElNRQfmAwsPGi+MyC9RAAAAQElEQVQI12NgQABGQUEBMENISUkRLKBsbGwEEhIyBgJFsICLC0iIUdnExcUZwnANQWfApKCK4doRBsKtQFgKAQC5Ww1JEHSEkAAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyMi0wMy0xMVQxNToyNjo0NyswMDowMDzr2J4AAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjItMDMtMTFUMTU6MjY6NDcrMDA6MDBNtmAiAAAAAElFTkSuQmCC)](https://www.rdkit.org/)
+
 This repo holds the code of the competition "Central Nervous System (CNS) drug development: drug screening and optimization" and serves as a semester project of "AI for Chemistry" (CH-457).
 
 ## Quickstart
@@ -69,26 +71,37 @@ Descriptors are mainly calculated with the help of the [descriptor module of RDK
 | Partition coefficients| [VSA-logP](https://www.rdkit.org/docs/source/rdkit.Chem.rdMolDescriptors.html#rdkit.Chem.rdMolDescriptors.SlogP_VSA_)| 12 |
 | Topological fingerprints| [topological torsion](https://www.rdkit.org/docs/source/rdkit.Chem.rdMolDescriptors.html#rdkit.Chem.rdMolDescriptors.GetHashedTopologicalTorsionFingerprintAsBitVect), [Morgan fingerprints](https://www.rdkit.org/docs/source/rdkit.Chem.rdMolDescriptors.html#rdkit.Chem.rdMolDescriptors.GetMorganFingerprintAsBitVect)| 3072 (bits) |
 
-In the real training process, some features are found to have only one value. These features are later removed and this leads to a total of 2912 features in the final scope.
+In the real training process, some features are found to have only one value. These features are later removed leading to a total of 2912 features in the final scope.
 
 ### Models
-Models can be simple models provided by [scikit-learn](https://scikit-learn.org/stable/) or complex models build by [PyTorch](https://pytorch.org/)
+Models can be simple models provided by [scikit-learn](https://scikit-learn.org/stable/) or complex models built by [PyTorch](https://pytorch.org/).
 
-#### Performance
-|Model | F2-score |
-|------|----------|
-|Logistic|0.734   |
-|Linear|0.734     |
-|Ridge |0.734     |
-|Lasso |0.625     |
-|ElasticNet|0.601 |
-|Bayesian|0.731   |
-|SGD   |0.459     |
-|Kernel|0.604     |
-|SVC   |0.638     |
-|KNN   |0.594     |
-|KMeans|0.048     |
-|GMM   |0.000     |
+Our final model is a perceptron with five hidden layers. The number of neurons in each layer is 3076, 2048, 1024, 512 and 128, respectively. Layers are all equipped with LayerNorm, ReLU activation function and dropout. The dropout rate varies, and is 0.8, 0.6, 0.4, 0.4, 0.4 for each layer. Below is a schematic figure of our model.
+
+![model](https://github.com/GardevoirX/CNS_drug_screening/assets/92628709/d9a62b22-9847-444a-8f29-f295da510137)
+
+Our model finally achieved an F2 score of .838 in the online test provided by the [Bohrium platform](https://bohrium.dp.tech/competitions/9169114995?tab=leaderboard).
+
+#### Performance of different models
+Below is the performance of different models. Though the Bayesian regression performs the best in the validation set, it is far behind perceptrons in the test set, which might be explained by the stronger generalization ability led by the more complex model.
+
+|Model | F2-score (validation)| F2-score (test)|
+|------|----------------------|----------------|
+|Logistic|0.747           |   |
+|Linear|0.679             |   |
+|Ridge |0.649             |   |
+|Lasso |0.676             |   |
+|ElasticNet|0.746         |   |
+|Bayesian|**0.843**           |0.702   |
+|SGD   |0.623             |   |
+|Kernel|0.731             |   |
+|SVC   |0.000             |   |
+|KNN   |0.675             |   |
+|KMeans|0.441             |   |
+|GMM   |0.783             |   |
+|3-Layer perceptron| 0.783|0.811   |
+|**5-Layer perceptron**| 0.796|**0.838**   |
 
 ## References
 1. https://bohrium.dp.tech/competitions/9169114995?tab=datasets (You can change the language in the menu hiding behind the up-right icon)
+2. https://www.rdkit.org/docs/index.html
